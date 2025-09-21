@@ -2,96 +2,111 @@ import React from "react";
 
 export default function RightPanel() {
   return (
-    <div className="space-y-8 w-100">
+    <div className="w-80 p-5 space-y-8 bg-gray-50">
       {/* Notifications */}
-      <div className="bg-white p-4 rounded-xl border shadow-sm">
-        <div className="font-semibold mb-3">Notifications</div>
+      <div>
+        <div className="flex items-center justify-between mb-3">
+          <h3 className="font-semibold text-gray-800">Notifications</h3>
+          <button className="text-xs text-blue-500 hover:underline">View all</button>
+        </div>
         <ul className="space-y-4 text-sm text-gray-700">
           <li className="flex items-start gap-3">
-            <div className="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center">🔔</div>
+            <div className="w-9 h-9 rounded-full bg-blue-100 flex items-center justify-center text-lg">
+              🔔
+            </div>
             <div>
-              <div className="font-medium">You have a bug that needs…</div>
-              <div className="text-xs text-gray-400">Just now</div>
+              <p className="font-medium text-gray-800">You have a bug that needs…</p>
+              <p className="text-xs text-gray-400">Just now</p>
             </div>
           </li>
           <li className="flex items-start gap-3">
-            <div className="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center">👤</div>
+            <div className="w-9 h-9 rounded-full bg-gray-100 flex items-center justify-center text-lg">
+              👤
+            </div>
             <div>
-              <div className="font-medium">New user registered</div>
-              <div className="text-xs text-gray-400">59 minutes ago</div>
+              <p className="font-medium text-gray-800">New user registered</p>
+              <p className="text-xs text-gray-400">59 minutes ago</p>
             </div>
           </li>
           <li className="flex items-start gap-3">
-            <div className="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center">🐞</div>
+            <div className="w-9 h-9 rounded-full bg-red-100 flex items-center justify-center text-lg">
+              🐞
+            </div>
             <div>
-              <div className="font-medium">You have a bug that needs…</div>
-              <div className="text-xs text-gray-400">12 hours ago</div>
+              <p className="font-medium text-gray-800">Bug reported in dashboard</p>
+              <p className="text-xs text-gray-400">12 hours ago</p>
             </div>
           </li>
           <li className="flex items-start gap-3">
-            <div className="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center">📩</div>
+            <div className="w-9 h-9 rounded-full bg-green-100 flex items-center justify-center text-lg">
+              📩
+            </div>
             <div>
-              <div className="font-medium">Andi Lane subscribed to you</div>
-              <div className="text-xs text-gray-400">Today, 11:59 AM</div>
+              <p className="font-medium text-gray-800">Andi Lane subscribed to you</p>
+              <p className="text-xs text-gray-400">Today, 11:59 AM</p>
             </div>
           </li>
         </ul>
       </div>
 
       {/* Activities */}
-      <div className="bg-white p-4 rounded-xl border shadow-sm">
-        <div className="font-semibold mb-3">Activities</div>
+      <div>
+        <div className="flex items-center justify-between mb-3">
+          <h3 className="font-semibold text-gray-800">Activities</h3>
+          <button className="text-xs text-blue-500 hover:underline">View all</button>
+        </div>
         <ul className="space-y-4 text-sm text-gray-700">
-          <li className="flex items-start gap-3">
-            <img src="https://i.pravatar.cc/30?img=1" alt="" className="w-8 h-8 rounded-full" />
-            <div>
-              <div className="font-medium">You have a bug that needs…</div>
-              <div className="text-xs text-gray-400">Just now</div>
-            </div>
-          </li>
-          <li className="flex items-start gap-3">
-            <img src="https://i.pravatar.cc/30?img=2" alt="" className="w-8 h-8 rounded-full" />
-            <div>
-              <div className="font-medium">Released a new version</div>
-              <div className="text-xs text-gray-400">59 minutes ago</div>
-            </div>
-          </li>
-          <li className="flex items-start gap-3">
-            <img src="https://i.pravatar.cc/30?img=3" alt="" className="w-8 h-8 rounded-full" />
-            <div>
-              <div className="font-medium">Submitted a bug</div>
-              <div className="text-xs text-gray-400">12 hours ago</div>
-            </div>
-          </li>
-          <li className="flex items-start gap-3">
-            <img src="https://i.pravatar.cc/30?img=4" alt="" className="w-8 h-8 rounded-full" />
-            <div>
-              <div className="font-medium">Modified A data in Page</div>
-              <div className="text-xs text-gray-400">Today, 11:59 AM</div>
-            </div>
-          </li>
-          <li className="flex items-start gap-3">
-            <img src="https://i.pravatar.cc/30?img=5" alt="" className="w-8 h-8 rounded-full" />
-            <div>
-              <div className="font-medium">Deleted a page in Project</div>
-              <div className="text-xs text-gray-400">Feb 2, 2023</div>
-            </div>
-          </li>
+          {[
+            { img: 1, text: "Commented on a post", time: "Just now" },
+            { img: 2, text: "Released a new version", time: "59 minutes ago" },
+            { img: 3, text: "Submitted a bug", time: "12 hours ago" },
+            { img: 4, text: "Modified data in a page", time: "Today, 11:59 AM" },
+            { img: 5, text: "Deleted a project page", time: "Feb 2, 2023" },
+          ].map((a, i) => (
+            <li key={i} className="flex items-start gap-3">
+              <img
+                src={`https://i.pravatar.cc/36?img=${a.img}`}
+                alt=""
+                className="w-9 h-9 rounded-full border"
+              />
+              <div>
+                <p className="font-medium text-gray-800">{a.text}</p>
+                <p className="text-xs text-gray-400">{a.time}</p>
+              </div>
+            </li>
+          ))}
         </ul>
       </div>
 
       {/* Contacts */}
-      <div className="bg-white p-4 rounded-xl border shadow-sm">
-        <div className="font-semibold mb-3">Contacts</div>
+      <div>
+        <div className="flex items-center justify-between mb-3">
+          <h3 className="font-semibold text-gray-800">Contacts</h3>
+          <button className="text-xs text-blue-500 hover:underline">View all</button>
+        </div>
         <ul className="space-y-3 text-sm text-gray-700">
-          {["Natali Craig", "Drew Cano", "Orlando Diggs", "Andi Lane", "Kate Morrison", "Koray Okumus"].map(
-            (name, i) => (
-              <li key={i} className="flex items-center gap-3">
-                <img src={`https://i.pravatar.cc/30?img=${i + 10}`} alt="" className="w-8 h-8 rounded-full" />
-                <span>{name}</span>
-              </li>
-            )
-          )}
+          {[
+            "Natali Craig",
+            "Drew Cano",
+            "Orlando Diggs",
+            "Andi Lane",
+            "Kate Morrison",
+            "Koray Okumus",
+          ].map((name, i) => (
+            <li key={i} className="flex items-center justify-between">
+              <div className="flex items-center gap-3">
+                <img
+                  src={`https://i.pravatar.cc/36?img=${i + 10}`}
+                  alt=""
+                  className="w-9 h-9 rounded-full border"
+                />
+                <span className="text-gray-800">{name}</span>
+              </div>
+              <button className="text-xs px-3 py-1 rounded-lg bg-blue-50 text-blue-600 hover:bg-blue-100">
+                Message
+              </button>
+            </li>
+          ))}
         </ul>
       </div>
     </div>
